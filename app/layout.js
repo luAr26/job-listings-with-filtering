@@ -1,6 +1,7 @@
 /** @format */
 
 import { League_Spartan } from "next/font/google";
+import { twMerge } from "tailwind-merge";
 import "./globals.css";
 
 const leagueSpartan = League_Spartan({
@@ -15,8 +16,10 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang='en'>
-      <body className={leagueSpartan.className}>{children}</body>
+    <html lang="en">
+      <body className={twMerge(leagueSpartan.className, "antialiased")}>
+        {children}
+      </body>
     </html>
   );
 }
