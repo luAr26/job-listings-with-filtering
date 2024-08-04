@@ -17,7 +17,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={twMerge(leagueSpartan.className, "antialiased")}>
+      <body
+        className={twMerge(
+          leagueSpartan.className,
+          "antialiased",
+          "text-tertiary",
+          "font-bold",
+          "bg-lighter",
+          "pt-[7.5rem]",
+        )}
+      >
         {children}
       </body>
     </html>
