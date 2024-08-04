@@ -25,9 +25,13 @@ export default function RootLayout({ children }) {
           "font-bold",
           "bg-lighter",
           "pt-[7.5rem]",
+          "bg-[url('/images/bg-header-mobile.svg')]",
+          "bg-repeat-x",
         )}
       >
-        {children}
+        <div className="mx-auto flex max-w-[23.4375rem] flex-col px-[1.5rem]">
+          {children}
+        </div>
       </body>
     </html>
   );
