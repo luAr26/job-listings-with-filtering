@@ -2,10 +2,10 @@ import { CgClose } from "react-icons/cg";
 
 function Filter({ children }) {
   return (
-    <div className="bg-primary-10 text-primary inline-flex items-center gap-[11px] overflow-hidden rounded-[4px] bg-opacity-10 pl-2 text-[1rem] leading-[1.5]">
+    <div className="inline-flex items-center gap-[11px] overflow-hidden rounded-[4px] bg-primary-10 bg-opacity-10 pl-2 text-[1rem] leading-[1.5] text-primary">
       {children}
       <span
-        className="bg-primary flex h-[2em] w-[2em] cursor-pointer items-center justify-center text-white"
+        className="flex h-[2em] w-[2em] cursor-pointer items-center justify-center bg-primary text-white hover:bg-tertiary"
         role="button"
       >
         <CgClose width={13.44} height={13.44} />

@@ -19,9 +19,12 @@ module.exports = {
       lighter: "var(--color-lighter)",
       white: "var(--color-white)",
     },
+    screens: {
+      desktop: "1180px",
+    },
     extend: {
       boxShadow: {
-        filters: "0 15px 20px -5px rgba(13, 113, 130, 0.15)",
+        main: "0 15px 20px -5px rgba(13, 113, 130, 0.15)",
       },
     },
   },

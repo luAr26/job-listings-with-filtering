@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
           "bg-repeat-x",
         )}
       >
-        <div className="mx-auto flex max-w-[23.4375rem] flex-col px-[1.5rem]">
+        <div className="desktop:max-w-[69.375rem] mx-auto flex max-w-[23.4375rem] flex-col px-[1.5rem]">
           {children}
         </div>
       </body>
