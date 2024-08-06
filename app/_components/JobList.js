@@ -1,11 +1,9 @@
-"use client";
-import { jobs } from "@/data";
 import Job from "@/app/_components/Job";
-function JobList() {
+function JobList({ jobs, setFilters }) {
   return (
     <div className="mt-20 flex flex-col gap-10">
       {jobs.map((job) => (
-        <Job key={job.id} job={job} />
+        <Job key={job.id} job={job} setFilters={setFilters} />
       ))}
     </div>
   );

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 
-function Job({ job }) {
+function Job({ job, setFilters }) {
   const {
     company,
     logo,
@@ -17,6 +17,14 @@ function Job({ job }) {
     languages,
     tools,
   } = job;
+
+  const handleClick = (e) => {
+    const text = e.target.textContent;
+    setFilters((prevFilters) => {
+      if (prevFilters.includes(text)) return prevFilters;
+      return [...prevFilters, text];
+    });
+  };
 
   return (
     <div
@@ -60,16 +68,23 @@ function Job({ job }) {
         </div>
       </div>
       <ul className="flex flex-row flex-wrap items-center gap-4 border-t-[1px] border-light pt-4 desktop:border-t-0">
-        <li className="inline-flex cursor-pointer rounded-[4px] bg-lighter px-2 pb-[0.1875em] pt-[0.3125em] text-[1rem] leading-[1.5] text-primary hover:bg-primary hover:text-white">
+        <li
+          className="inline-flex cursor-pointer rounded-[4px] bg-lighter px-2 pb-[0.1875em] pt-[0.3125em] text-[1rem] leading-[1.5] text-primary hover:bg-primary hover:text-white"
+          onClick={handleClick}
+        >
           {role}
         </li>
-        <li className="inline-flex cursor-pointer rounded-[4px] bg-lighter px-2 pb-[0.1875em] pt-[0.3125em] text-[1rem] leading-[1.5] text-primary hover:bg-primary hover:text-white">
+        <li
+          className="inline-flex cursor-pointer rounded-[4px] bg-lighter px-2 pb-[0.1875em] pt-[0.3125em] text-[1rem] leading-[1.5] text-primary hover:bg-primary hover:text-white"
+          onClick={handleClick}
+        >
           {level}
         </li>
         {languages.map((language) => (
           <li
             key={language}
             className="inline-flex cursor-pointer rounded-[4px] bg-lighter px-2 pb-[0.1875em] pt-[0.3125em] text-[1rem] leading-[1.5] text-primary hover:bg-primary hover:text-white"
+            onClick={handleClick}
           >
             {language}
           </li>
@@ -78,6 +93,7 @@ function Job({ job }) {
           <li
             key={tool}
             className="inline-flex cursor-pointer rounded-[4px] bg-lighter px-2 pb-[0.1875em] pt-[0.3125em] text-[1rem] leading-[1.5] text-primary hover:bg-primary hover:text-white"
+            onClick={handleClick}
           >
             {tool}
           </li>
