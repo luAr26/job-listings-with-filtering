@@ -1,7 +1,7 @@
 /** @format */
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { jobs } from "@/data";
 import Attribution from "@/app/_components/Attribution";
 import Filters from "@/app/_components/Filters";
@@ -9,6 +9,7 @@ import JobList from "@/app/_components/JobList";
 
 export default function Home() {
   const [filters, setFilters] = useState(() => {
+    if (typeof window === "undefined") return [];
     const storedFilters = JSON.parse(localStorage.getItem("filters"));
     return storedFilters || [];
   });
