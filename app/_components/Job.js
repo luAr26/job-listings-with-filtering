@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { twMerge } from "tailwind-merge";
 
-function Job({ job, setFilters }) {
+function Job({ job, setFilters, filters }) {
   const {
     company,
     logo,
@@ -22,6 +22,7 @@ function Job({ job, setFilters }) {
     const text = e.target.textContent;
     setFilters((prevFilters) => {
       if (prevFilters.includes(text)) return prevFilters;
+      localStorage.setItem("filters", JSON.stringify([...prevFilters, text]));
       return [...prevFilters, text];
     });
   };
@@ -69,13 +70,19 @@ function Job({ job, setFilters }) {
       </div>
       <ul className="flex flex-row flex-wrap items-center gap-4 border-t-[1px] border-light pt-4 desktop:border-t-0">
         <li
-          className="inline-flex cursor-pointer rounded-[4px] bg-lighter px-2 pb-[0.1875em] pt-[0.3125em] text-[1rem] leading-[1.5] text-primary hover:bg-primary hover:text-white"
+          className={twMerge(
+            "inline-flex cursor-pointer rounded-[4px] bg-lighter px-2 pb-[0.1875em] pt-[0.3125em] text-[1rem] leading-[1.5] text-primary hover:bg-primary hover:text-white",
+            filters.includes(role) && "bg-primary text-white",
+          )}
           onClick={handleClick}
         >
           {role}
         </li>
         <li
-          className="inline-flex cursor-pointer rounded-[4px] bg-lighter px-2 pb-[0.1875em] pt-[0.3125em] text-[1rem] leading-[1.5] text-primary hover:bg-primary hover:text-white"
+          className={twMerge(
+            "inline-flex cursor-pointer rounded-[4px] bg-lighter px-2 pb-[0.1875em] pt-[0.3125em] text-[1rem] leading-[1.5] text-primary hover:bg-primary hover:text-white",
+            filters.includes(level) && "bg-primary text-white",
+          )}
           onClick={handleClick}
         >
           {level}
@@ -83,7 +90,10 @@ function Job({ job, setFilters }) {
         {languages.map((language) => (
           <li
             key={language}
-            className="inline-flex cursor-pointer rounded-[4px] bg-lighter px-2 pb-[0.1875em] pt-[0.3125em] text-[1rem] leading-[1.5] text-primary hover:bg-primary hover:text-white"
+            className={twMerge(
+              "inline-flex cursor-pointer rounded-[4px] bg-lighter px-2 pb-[0.1875em] pt-[0.3125em] text-[1rem] leading-[1.5] text-primary hover:bg-primary hover:text-white",
+              filters.includes(language) && "bg-primary text-white",
+            )}
             onClick={handleClick}
           >
             {language}
@@ -92,7 +102,10 @@ function Job({ job, setFilters }) {
         {tools.map((tool) => (
           <li
             key={tool}
-            className="inline-flex cursor-pointer rounded-[4px] bg-lighter px-2 pb-[0.1875em] pt-[0.3125em] text-[1rem] leading-[1.5] text-primary hover:bg-primary hover:text-white"
+            className={twMerge(
+              "inline-flex cursor-pointer rounded-[4px] bg-lighter px-2 pb-[0.1875em] pt-[0.3125em] text-[1rem] leading-[1.5] text-primary hover:bg-primary hover:text-white",
+              filters.includes(tool) && "bg-primary text-white",
+            )}
             onClick={handleClick}
           >
             {tool}
